@@ -4,6 +4,6 @@ import { ProfessoresController } from './controllers/ProfessoresController';
 const router = express.Router();
 
 
-router.post('/professor',new ProfessoresController().handle)
+router.post('/professor', new ProfessoresController().created)
 
 export { router }
