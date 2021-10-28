@@ -13,19 +13,43 @@ datasource db {
 
 model Professor {
   id Int  @id @default(autoincrement())
-  Nome String @db.VarChar(50) 
-  Cpf String  @db.VarChar(14)
+  nome String
+  matricula Int @unique
   createdAt DateTime @default(now())
-  updateAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
 
 model Materia {
   id Int  @id @default(autoincrement())
-  Nome String @db.VarChar(50) 
-  carga_horaria String @db.VarChar(50) 
-  max_matriculas String @db.VarChar(50) 
+  nome String 
+  carga_horaria String 
+  max_matriculas Int
   createdAt DateTime @default(now())
-  updateAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
 
+model Horario_materia (
+  id Int  @id @default(autoincrement())
+  horario_disponivel DateTime
+  dia_disponivel String
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+);
+
+model Disponibiliza (
+  id Int  @id @default(autoincrement())
+  disponivel Boolean @default(true)
+  id_professor Professor[]
+  id_horario_materia Horario_materia[]
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+)
+
+model Ministra (
+  id Int  @id @default(autoincrement())
+  id_professor Professor[]
+  id_materia Materia[]
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+)
 

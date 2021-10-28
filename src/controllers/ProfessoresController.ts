@@ -31,7 +31,7 @@ class ProfessoresController {
     return response.json(result);
   }
 
-  async(request: Request, response: Response) {
+  async updated (request: Request, response: Response) {
     const { Nome } = request.body;
     const { Id } = request.params;
 
@@ -40,9 +40,9 @@ class ProfessoresController {
     const result = await service.modified(Id, Nome);
 
     return response.json(result);
-  },
+  }
 
-  async(request: Request, response: Response) {
+  async deleted(request: Request, response: Response) {
     const { Nome } = request.body;
     const { Id } = request.params;
 
